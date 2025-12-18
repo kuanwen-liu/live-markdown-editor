@@ -1,3 +1,46 @@
+/* Theme Color Variables */
+:root[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-tertiary: #f1f1f1;
+  --text-primary: #24292e;
+  --text-secondary: #6a737d;
+  --border-primary: #e1e4e8;
+  --border-secondary: #d1d5da;
+  --border-tertiary: #c6cbd1;
+  --link-color: #0366d6;
+  --code-bg: #f6f8fa;
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #a8a8a8;
+  --toolbar-button-bg: #ffffff;
+  --toolbar-button-border: #d1d5da;
+  --toolbar-button-hover-bg: #f3f4f6;
+  --toolbar-button-hover-border: #c4c8cc;
+  --toolbar-button-active-bg: #e1e4e8;
+}
+
+:root[data-theme="dark"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #1c2128;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --border-primary: #30363d;
+  --border-secondary: #21262d;
+  --border-tertiary: #373e47;
+  --link-color: #58a6ff;
+  --code-bg: #161b22;
+  --scrollbar-track: #161b22;
+  --scrollbar-thumb: #484f58;
+  --scrollbar-thumb-hover: #6e7681;
+  --toolbar-button-bg: #21262d;
+  --toolbar-button-border: #30363d;
+  --toolbar-button-hover-bg: #30363d;
+  --toolbar-button-hover-border: #484f58;
+  --toolbar-button-active-bg: #161b22;
+}
+
 /* Main editor container - full viewport */
 .markdown-editor {
   display: flex;
@@ -11,31 +54,40 @@
   display: flex;
   gap: 10px;
   padding: 12px 16px;
-  border-bottom: 1px solid #e1e4e8;
-  background: #f6f8fa;
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
   flex-shrink: 0;
 }
 
 .toolbar-button {
   padding: 8px 16px;
-  background: #ffffff;
-  border: 1px solid #d1d5da;
+  background: var(--toolbar-button-bg);
+  border: 1px solid var(--toolbar-button-border);
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
-  color: #24292e;
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .toolbar-button:hover {
-  background: #f3f4f6;
-  border-color: #c4c8cc;
+  background: var(--toolbar-button-hover-bg);
+  border-color: var(--toolbar-button-hover-border);
 }
 
 .toolbar-button:active {
-  background: #e1e4e8;
+  background: var(--toolbar-button-active-bg);
   transform: scale(0.98);
+}
+
+.theme-toggle {
+  font-size: 18px;
+  padding: 8px 12px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Content area - split layout */
@@ -50,20 +102,20 @@
 .editor-textarea {
   flex: 1;
   border: none;
-  border-right: 1px solid #e1e4e8;
+  border-right: 1px solid var(--border-primary);
   padding: 20px;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
   font-size: 14px;
   line-height: 1.6;
-  color: #24292e;
-  background: #ffffff;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   resize: none;
   overflow-y: auto;
   outline: none;
 }
 
 .editor-textarea::placeholder {
-  color: #6a737d;
+  color: var(--text-secondary);
   opacity: 0.6;
 }
 
@@ -72,8 +124,8 @@
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background: #ffffff;
-  color: #24292e;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
 }
@@ -93,13 +145,13 @@
 
 .editor-preview h1 {
   font-size: 2em;
-  border-bottom: 1px solid #e1e4e8;
+  border-bottom: 1px solid var(--border-primary);
   padding-bottom: 0.3em;
 }
 
 .editor-preview h2 {
   font-size: 1.5em;
-  border-bottom: 1px solid #e1e4e8;
+  border-bottom: 1px solid var(--border-primary);
   padding-bottom: 0.3em;
 }
 
@@ -117,7 +169,7 @@
 
 .editor-preview h6 {
   font-size: 0.85em;
-  color: #6a737d;
+  color: var(--text-secondary);
 }
 
 .editor-preview p {
@@ -139,7 +191,7 @@
 
 /* Links */
 .editor-preview a {
-  color: #0366d6;
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -168,7 +220,7 @@
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: #f6f8fa;
+  background-color: var(--code-bg);
   border-radius: 3px;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
 }
@@ -178,7 +230,7 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f6f8fa;
+  background-color: var(--code-bg);
   border-radius: 6px;
   margin-top: 0;
   margin-bottom: 16px;
@@ -207,29 +259,29 @@
 .editor-preview table th,
 .editor-preview table td {
   padding: 6px 13px;
-  border: 1px solid #d1d5da;
+  border: 1px solid var(--border-secondary);
 }
 
 .editor-preview table th {
   font-weight: 600;
-  background-color: #f6f8fa;
+  background-color: var(--bg-secondary);
 }
 
 .editor-preview table tr {
-  background-color: #ffffff;
-  border-top: 1px solid #c6cbd1;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-tertiary);
 }
 
 .editor-preview table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+  background-color: var(--bg-secondary);
 }
 
 /* Blockquotes */
 .editor-preview blockquote {
   margin: 0 0 16px 0;
   padding: 0 1em;
-  color: #6a737d;
-  border-left: 0.25em solid #d1d5da;
+  color: var(--text-secondary);
+  border-left: 0.25em solid var(--border-secondary);
 }
 
 .editor-preview blockquote > :first-child {
@@ -245,7 +297,7 @@
   height: 0.25em;
   padding: 0;
   margin: 24px 0;
-  background-color: #e1e4e8;
+  background-color: var(--border-primary);
   border: 0;
 }
 
@@ -254,7 +306,7 @@
   max-width: 100%;
   height: auto;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
 }
 
 /* Scrollbar styling for webkit browsers */
@@ -266,16 +318,16 @@
 
 .editor-textarea::-webkit-scrollbar-track,
 .editor-preview::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--scrollbar-track);
 }
 
 .editor-textarea::-webkit-scrollbar-thumb,
 .editor-preview::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--scrollbar-thumb);
   border-radius: 6px;
 }
 
 .editor-textarea::-webkit-scrollbar-thumb:hover,
 .editor-preview::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: var(--scrollbar-thumb-hover);
 }
