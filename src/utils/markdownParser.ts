@@ -9,13 +9,12 @@ marked.setOptions({
 
 // Custom renderer for syntax highlighting
 const renderer = new marked.Renderer();
-const originalCodeRenderer = renderer.code.bind(renderer);
 
-renderer.code = function(code: string, language: string | undefined) {
-  if (language && hljs.getLanguage(language)) {
+renderer.code = function({ text, lang }: { text: string; lang?: string }) {
+  if (lang && hljs.getLanguage(lang)) {
     try {
-      const highlighted = hljs.highlight(code, { language }).value;
-      return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`;
+      const highlighted = hljs.highlight(text, { language: lang }).value;
+      return `<pre><code class="hljs language-${lang}">${highlighted}</code></pre>`;
     } catch (err) {
       console.error('Highlight error:', err);
     }
@@ -23,14 +22,14 @@ renderer.code = function(code: string, language: string | undefined) {
 
   // Auto-detect language if not specified
   try {
-    const highlighted = hljs.highlightAuto(code).value;
+    const highlighted = hljs.highlightAuto(text).value;
     return `<pre><code class="hljs">${highlighted}</code></pre>`;
   } catch (err) {
     console.error('Auto-highlight error:', err);
   }
 
-  // Fallback to original renderer
-  return originalCodeRenderer(code, language);
+  // Fallback to default rendering
+  return `<pre><code>${text}</code></pre>`;
 };
 
 marked.setOptions({ renderer });
