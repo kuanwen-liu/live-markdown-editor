@@ -1,0 +1,281 @@
+/* Main editor container - full viewport */
+.markdown-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Toolbar styling */
+.editor-toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e1e4e8;
+  background: #f6f8fa;
+  flex-shrink: 0;
+}
+
+.toolbar-button {
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24292e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toolbar-button:hover {
+  background: #f3f4f6;
+  border-color: #c4c8cc;
+}
+
+.toolbar-button:active {
+  background: #e1e4e8;
+  transform: scale(0.98);
+}
+
+/* Content area - split layout */
+.editor-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Textarea - left pane */
+.editor-textarea {
+  flex: 1;
+  border: none;
+  border-right: 1px solid #e1e4e8;
+  padding: 20px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #24292e;
+  background: #ffffff;
+  resize: none;
+  overflow-y: auto;
+  outline: none;
+}
+
+.editor-textarea::placeholder {
+  color: #6a737d;
+  opacity: 0.6;
+}
+
+/* Preview - right pane */
+.editor-preview {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #24292e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+}
+
+/* Markdown element styling */
+.editor-preview h1,
+.editor-preview h2,
+.editor-preview h3,
+.editor-preview h4,
+.editor-preview h5,
+.editor-preview h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.editor-preview h1 {
+  font-size: 2em;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 0.3em;
+}
+
+.editor-preview h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 0.3em;
+}
+
+.editor-preview h3 {
+  font-size: 1.25em;
+}
+
+.editor-preview h4 {
+  font-size: 1em;
+}
+
+.editor-preview h5 {
+  font-size: 0.875em;
+}
+
+.editor-preview h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.editor-preview p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.editor-preview strong {
+  font-weight: 600;
+}
+
+.editor-preview em {
+  font-style: italic;
+}
+
+.editor-preview del {
+  text-decoration: line-through;
+}
+
+/* Links */
+.editor-preview a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.editor-preview a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.editor-preview ul,
+.editor-preview ol {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-left: 2em;
+}
+
+.editor-preview li {
+  margin-top: 0.25em;
+}
+
+.editor-preview li + li {
+  margin-top: 0.25em;
+}
+
+/* Code */
+.editor-preview code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+}
+
+.editor-preview pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.editor-preview pre code {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  background-color: transparent;
+  border: 0;
+  font-size: 100%;
+}
+
+/* Tables */
+.editor-preview table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.editor-preview table th,
+.editor-preview table td {
+  padding: 6px 13px;
+  border: 1px solid #d1d5da;
+}
+
+.editor-preview table th {
+  font-weight: 600;
+  background-color: #f6f8fa;
+}
+
+.editor-preview table tr {
+  background-color: #ffffff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.editor-preview table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/* Blockquotes */
+.editor-preview blockquote {
+  margin: 0 0 16px 0;
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #d1d5da;
+}
+
+.editor-preview blockquote > :first-child {
+  margin-top: 0;
+}
+
+.editor-preview blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Horizontal rules */
+.editor-preview hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+/* Images */
+.editor-preview img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+/* Scrollbar styling for webkit browsers */
+.editor-textarea::-webkit-scrollbar,
+.editor-preview::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.editor-textarea::-webkit-scrollbar-track,
+.editor-preview::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.editor-textarea::-webkit-scrollbar-thumb,
+.editor-preview::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+}
+
+.editor-textarea::-webkit-scrollbar-thumb:hover,
+.editor-preview::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
